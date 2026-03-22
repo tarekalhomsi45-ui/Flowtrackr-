@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlowTrackr | Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo-area"><h1>FlowTrackr</h1></div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="settings.html" class="nav-item active"><i class="fa-solid fa-gear"></i> Settings</a>
+        </div>
+    </nav>
+    <main>
+        <h2>Settings</h2>
+        <div class="tab-container" style="margin: 20px 0;">
+            <div class="tab active">Account</div>
+            <div class="tab">Themes</div>
+            <div class="tab">What's New</div>
+        </div>
+
+        <div class="account-card">
+            <div class="avatar" id="avatar-letter">T</div>
+            <div>
+                <h3 id="set-name">User Name</h3>
+                <p id="set-email" style="color:var(--text-dim)">user@email.com</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <button class="auth-btn" style="background: #252525; color: white; margin-bottom: 10px;">Update Profile</button>
+            <button class="auth-btn" style="background: #3a1a1a; color: #ff4d6d;" onclick="deleteAccount()">Delete Account</button>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('set-name').innerText = localStorage.getItem('userName') || "User";
+        document.getElementById('set-email').innerText = localStorage.getItem('userEmail') || "No email found";
+        document.getElementById('avatar-letter').innerText = (localStorage.getItem('userName') || "U").charAt(0);
+
+        function deleteAccount() {
+            if(confirm("Are you sure? This will delete all your data.")) {
+                localStorage.clear();
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>
