@@ -2,16 +2,192 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowTrackr | Dashboard</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CORE DESIGN --- */
+        :root {
+            --bg-dark: #0f0f0f;
+            --sidebar-bg: #111111;
+            --accent-purple: #9d7cff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --active-bg: #f5f3ff; /* The light purple from your pic */
+            --active-text: #7c3aed; /* The deep purple from your pic */
+            
+            /* Exact gradients from your screenshots */
+            --card-red: linear-gradient(145deg, #2a1a24 0%, #161616 100%);
+            --card-orange: linear-gradient(145deg, #2a2216 0%, #161616 100%);
+            --banner-purple: #231934;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR --- */
+        nav {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            padding: 2.5rem 1.2rem;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #222;
+        }
+
+        .logo-area h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 2.5rem;
+            padding-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            border-radius: 14px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.2s ease;
+        }
+
+        .nav-item i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* THE ACTIVE STATE - Purple background, purple text */
+        .nav-item.active {
+            background-color: var(--active-bg);
+            color: var(--active-text);
+            font-weight: 700;
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            flex: 1;
+            padding: 4rem 5rem;
+            max-width: 1400px;
+        }
+
+        .greeting-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-text {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Quote Banner */
+        .quote-banner {
+            background: var(--banner-purple);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid #3d2b5d;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 3.5rem;
+        }
+
+        .stat-card {
+            padding: 3.5rem 2.5rem;
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .stat-card.tasks { background: var(--card-red); border-color: #3d2434; }
+        .stat-card.homework { background: var(--card-orange); border-color: #3d301d; }
+
+        .stat-card .count {
+            font-size: 4.5rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Quick Actions */
+        .actions-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-action {
+            background: #1c1c1c;
+            border: 1px solid #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-action:hover {
+            background: #252525;
+        }
+    </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-area"><h1>FlowTrackr</h1></div>
+        <div class="logo-area">
+            <h1>FlowTrackr</h1>
+        </div>
         <div class="nav-links">
-            <a href="dashboard.html" class="nav-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
             <a href="tasks.html" class="nav-item"><i class="fa-solid fa-list-ul"></i> Tasks</a>
             <a href="homework.html" class="nav-item"><i class="fa-solid fa-book-bookmark"></i> Homework</a>
             <a href="challenge.html" class="nav-item"><i class="fa-solid fa-mobile-screen"></i> Challenge</a>
@@ -21,7 +197,7 @@
     </nav>
 
     <main>
-        <h2 class="greeting-title" id="greet">Good morning 👋</h2>
+        <h2 class="greeting-title" id="display-greet">Good morning 👋</h2>
         <p class="sub-text">Here's your progress today</p>
 
         <div class="quote-banner">
@@ -35,6 +211,7 @@
                 <span class="count">0</span>
                 <span class="label">Tasks Remaining</span>
             </div>
+
             <div class="stat-card homework">
                 <i class="fa-solid fa-book" style="color: #ffb703; font-size: 1.8rem; margin-bottom: 1.5rem; display: block;"></i>
                 <span class="count">0</span>
@@ -42,13 +219,13 @@
             </div>
         </div>
 
-        <div style="margin-top: 3rem;">
-            <h3 style="margin-bottom: 1.5rem;">Quick Actions</h3>
-            <div style="display: flex; gap: 15px;">
-                <button class="btn-action" onclick="window.location.href='planner.html'">
+        <div class="quick-actions">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Quick Actions</h3>
+            <div class="actions-row">
+                <button class="btn-action">
                     <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple);"></i> AI Plan
                 </button>
-                <button class="btn-action" onclick="window.location.href='challenge.html'">
+                <button class="btn-action">
                     <i class="fa-solid fa-mobile-screen" style="color: #00c896;"></i> Focus
                 </button>
             </div>
@@ -56,12 +233,15 @@
     </main>
 
     <script>
-        const name = localStorage.getItem('userName') || "User";
+        // Personalization logic
+        const userName = localStorage.getItem('userName') || "User";
         const hour = new Date().getHours();
         let greeting = "Good morning";
+
         if (hour >= 12 && hour < 17) greeting = "Good afternoon";
         else if (hour >= 17) greeting = "Good evening";
-        document.getElementById('greet').innerText = `${greeting}, ${name} 👋`;
+
+        document.getElementById('display-greet').innerText = `${greeting}, ${userName} 👋`;
     </script>
 </body>
 </html>
