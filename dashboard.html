@@ -2,167 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowTrackr | Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Specific Fixes for the Dashboard Layout */
-        .main-container {
-            display: flex;
-            min-height: 100vh;
-            width: 100%;
-        }
-
-        main {
-            flex: 1;
-            padding: 4rem;
-            background-color: #0f0f0f;
-        }
-
-        .greeting-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .sub-text {
-            color: #a0a0a0;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        /* The Stats Cards from your Screenshot */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .stat-card {
-            padding: 3rem;
-            border-radius: 28px;
-            position: relative;
-            transition: transform 0.2s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-card.tasks {
-            background: linear-gradient(145deg, #2a1a24 0%, #161616 100%);
-            border: 1px solid #3d2434;
-        }
-
-        .stat-card.homework {
-            background: linear-gradient(145deg, #2a2216 0%, #161616 100%);
-            border: 1px solid #3d301d;
-        }
-
-        .stat-card .count {
-            font-size: 4rem;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card .label {
-            color: #a0a0a0;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .card-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        /* Sidebar Item - Exact Match to Screenshot */
-        .nav-item.active {
-            background-color: #f5f3ff !important;
-            color: #7c3aed !important;
-            font-weight: 600;
-        }
-    </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <nav>
-            <div class="logo-area">
-                <h1 style="color: white; font-weight: 800; margin-bottom: 2.5rem; padding-left: 10px;">FlowTrackr</h1>
-            </div>
-            
-            <div class="nav-links">
-                <a href="dashboard.html" class="nav-item active">
-                    <i class="fa-solid fa-house"></i> Dashboard
-                </a>
-                <a href="tasks.html" class="nav-item">
-                    <i class="fa-solid fa-list-ul"></i> Tasks
-                </a>
-                <a href="homework.html" class="nav-item">
-                    <i class="fa-solid fa-book-bookmark"></i> Homework
-                </a>
-                <a href="settings.html" class="nav-item">
-                    <i class="fa-solid fa-gear"></i> Settings
-                </a>
-                
-                <div style="margin-top: auto;">
-                    <a href="index.html" class="nav-item" style="color: #ff4d6d;">
-                        <i class="fa-solid fa-right-from-bracket"></i> Sign Out
-                    </a>
-                </div>
-            </div>
-        </nav>
+    <nav>
+        <div class="logo-area"><h1>FlowTrackr</h1></div>
+        <div class="nav-links">
+            <a href="dashboard.html" class="nav-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="tasks.html" class="nav-item"><i class="fa-solid fa-list-ul"></i> Tasks</a>
+            <a href="homework.html" class="nav-item"><i class="fa-solid fa-book"></i> Homework</a>
+            <a href="challenge.html" class="nav-item"><i class="fa-solid fa-mobile-screen"></i> Challenge</a>
+            <a href="planner.html" class="nav-item"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Planner</a>
+            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
+        </div>
+    </nav>
 
-        <main>
-            <h2 id="greet" class="greeting-title">Good morning 👋</h2>
-            <p class="sub-text">Here's your progress today</p>
+    <main>
+        <h2 class="greeting-title" id="greet">Good morning 👋</h2>
+        <p class="sub-text">Here's your progress today</p>
 
-            <div class="stats-grid">
-                <div class="stat-card tasks">
-                    <i class="fa-solid fa-list-check card-icon" style="color: #ff4d6d;"></i>
-                    <span class="count" id="task-count">0</span>
-                    <span class="label">Tasks Remaining</span>
-                </div>
+        <div class="quote-banner">
+            <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-purple); font-size: 1.2rem;"></i>
+            <p style="color: #e0d5ff; font-style: italic;">"Success is built on daily habits, not once-in-a-lifetime effort."</p>
+        </div>
 
-                <div class="stat-card homework">
-                    <i class="fa-solid fa-book card-icon" style="color: #ffb703;"></i>
-                    <span class="count" id="hw-count">0</span>
-                    <span class="label">Homework Due</span>
-                </div>
+        <div class="stats-grid">
+            <div class="stat-card tasks">
+                <i class="fa-solid fa-list-check" style="color: #ff4d6d; font-size: 1.8rem; margin-bottom: 1.5rem; display: block;"></i>
+                <span class="count">0</span>
+                <span class="label">Tasks Remaining</span>
             </div>
-            
-            <div style="margin-top: 4rem;">
-                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">Quick Actions</h3>
-                <div style="display: flex; gap: 15px;">
-                    <button class="auth-btn" style="width: auto; padding: 12px 25px; background: #1c1c1c; border: 1px solid #333;" onclick="window.location.href='planner.html'">
-                        <i class="fa-solid fa-wand-magic-sparkles" style="margin-right: 8px; color: #9d7cff;"></i> AI Plan
-                    </button>
-                    <button class="auth-btn" style="width: auto; padding: 12px 25px; background: #1c1c1c; border: 1px solid #333;" onclick="window.location.href='challenge.html'">
-                        <i class="fa-solid fa-mobile-screen" style="margin-right: 8px; color: #00c896;"></i> Focus
-                    </button>
-                </div>
+            <div class="stat-card homework">
+                <i class="fa-solid fa-book" style="color: #ffb703; font-size: 1.8rem; margin-bottom: 1.5rem; display: block;"></i>
+                <span class="count">0</span>
+                <span class="label">Homework Due</span>
             </div>
-        </main>
-    </div>
+        </div>
+
+        <div style="margin-top: 4rem;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Quick Actions</h3>
+            <div style="display: flex; gap: 12px;">
+                <button class="btn-plus" style="background: #1c1c1c; border: 1px solid #333; color: white;">+ Add Task</button>
+                <button class="btn-plus" style="background: #1c1c1c; border: 1px solid #333; color: white;">+ Add Homework</button>
+            </div>
+        </div>
+    </main>
 
     <script>
-        // Load personal data
-        const userName = localStorage.getItem('userName') || "User";
+        // Use the name from the Login/Google Auth
+        const name = localStorage.getItem('userName') || "User";
         
-        // Time logic for greeting
-        const now = new Date();
-        const hour = now.getHours();
-        let greeting = "Good morning";
-        
-        if (hour >= 12 && hour < 17) greeting = "Good afternoon";
-        else if (hour >= 17) greeting = "Good evening";
-        
-        document.getElementById('greet').innerText = `${greeting}, ${userName} 👋`;
+        // Dynamic Time Greeting
+        const hour = new Date().getHours();
+        let greetText = "Good morning";
+        if(hour >= 12 && hour < 17) greetText = "Good afternoon";
+        else if(hour >= 17) greetText = "Good evening";
+
+        document.getElementById('greet').innerText = `${greetText}, ${name} 👋`;
     </script>
 </body>
 </html>
