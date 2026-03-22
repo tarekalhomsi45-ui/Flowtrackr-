@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
     --bg-dark: #0f0f0f;
     --sidebar-bg: #111111;
@@ -5,27 +7,35 @@
     --accent-purple: #9d7cff;
     --text-main: #ffffff;
     --text-dim: #a0a0a0;
+    --sidebar-active: #f5f3ff;
+    --sidebar-active-text: #7c3aed;
     
-    /* Exact colors from your screenshots */
-    --card-red: #2a1a24;
-    --card-orange: #2a2216;
-    --quote-purple: #231934;
+    /* Exact card colors from your screenshots */
+    --card-red-gradient: linear-gradient(145deg, #2a1a24 0%, #161616 100%);
+    --card-orange-gradient: linear-gradient(145deg, #2a2216 0%, #161616 100%);
+    --banner-purple: #231934;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Inter', sans-serif; 
+}
 
 body { 
     background-color: var(--bg-dark); 
     color: var(--text-main); 
-    display: flex; /* This puts sidebar and main side-by-side */
+    display: flex; 
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* --- SIDEBAR --- */
+/* --- SIDEBAR (Left) --- */
 nav {
-    width: 260px;
+    width: 280px; /* Wider sidebar like your pic */
     background-color: var(--sidebar-bg);
-    padding: 2rem 1rem;
+    padding: 2.5rem 1.2rem;
     height: 100vh;
     position: sticky;
     top: 0;
@@ -34,69 +44,123 @@ nav {
     border-right: 1px solid #222;
 }
 
-.logo-area h1 { font-size: 1.8rem; margin-bottom: 2rem; padding-left: 10px; }
+.logo-area h1 { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    letter-spacing: -1.5px;
+    margin-bottom: 2.5rem;
+    padding-left: 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
 .nav-item {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
-    margin-bottom: 8px;
-    border-radius: 12px;
+    padding: 14px 18px;
+    border-radius: 14px;
     color: var(--text-dim);
     text-decoration: none;
-    transition: 0.2s;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: 0.2s ease;
 }
 
+.nav-item i { 
+    margin-right: 15px; 
+    width: 20px; 
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* ACTIVE STATE - Light purple bg, purple text */
 .nav-item.active {
-    background-color: #f5f3ff;
-    color: #7c3aed;
+    background-color: var(--sidebar-active);
+    color: var(--sidebar-active-text);
+    font-weight: 700;
 }
 
-.nav-item i { margin-right: 15px; width: 20px; text-align: center; }
+.nav-item:hover:not(.active) {
+    background-color: #222;
+    color: white;
+}
 
-/* --- MAIN CONTENT --- */
+/* --- MAIN CONTENT (Right) --- */
 main {
     flex: 1;
-    padding: 40px 60px;
-    max-width: 1200px;
+    padding: 4rem 5rem;
+    max-width: 1300px;
+}
+
+.greeting-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+}
+
+.sub-text {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
 }
 
 /* Quote Banner */
 .quote-banner {
-    background: var(--quote-purple);
-    padding: 20px;
-    border-radius: 16px;
+    background: var(--banner-purple);
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
     border: 1px solid #3d2b5d;
-    margin-bottom: 30px;
     display: flex;
     align-items: center;
+    gap: 15px;
+    margin-bottom: 2.5rem;
+}
+
+.quote-banner p {
+    color: #e0d5ff;
+    font-style: italic;
+    font-size: 1rem;
 }
 
 /* Stats Cards */
 .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 25px;
+    margin-bottom: 3rem;
 }
 
 .stat-card {
-    padding: 40px;
-    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    border-radius: 28px;
     position: relative;
-    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-.stat-card.tasks { background: var(--card-red); }
-.stat-card.homework { background: var(--card-orange); }
+.stat-card.tasks { background: var(--card-red-gradient); border-color: #3d2434; }
+.stat-card.homework { background: var(--card-orange-gradient); border-color: #3d301d; }
 
 .stat-card .count {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
     display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
 
-/* Auth Screens */
-.auth-body { justify-content: center; align-items: center; }
-.auth-card { background: var(--sidebar-bg); padding: 3rem; border-radius: 24px; width: 400px; border: 1px solid #333; text-align: center; }
-.auth-input { width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 12px; border: 1px solid #333; background: #000; color: white; outline: none; }
-.auth-btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: var(--accent-purple); color: white; font-weight: 600; cursor: pointer; }
+.stat-card .label {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.stat-card i {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
