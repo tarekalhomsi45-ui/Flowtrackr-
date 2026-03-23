@@ -1,72 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowTrackr | Tasks</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-dark: #0f0f0f;
-            --sidebar-bg: #161616;
-            --card-bg: #1c1c1c;
-            --accent-purple: #9d7cff;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
-
-        body { background-color: var(--bg-dark); color: var(--text-main); display: flex; min-height: 100vh; }
-
-        nav { width: 260px; background-color: var(--sidebar-bg); padding: 2rem 1rem; display: flex; flex-direction: column; border-right: 1px solid #222; }
-        .logo-area { margin-bottom: 2rem; padding-left: 10px; }
-        .logo-area h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; }
-        .nav-item { display: flex; align-items: center; padding: 12px 15px; margin-bottom: 8px; border-radius: 12px; color: var(--text-dim); text-decoration: none; transition: 0.2s; font-weight: 500; }
-        .nav-item.active { background-color: #f5f3ff; color: #7c3aed; }
-        .nav-item:hover:not(.active) { background-color: #252525; color: white; }
-
-        main { flex: 1; padding: 3rem; max-width: 1100px; }
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-        
-        /* TASK CARD STYLE */
-        .task-card {
-            background-color: var(--card-bg);
-            padding: 1.2rem;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            transition: 0.2s;
-            border: 1px solid transparent;
-        }
-        .task-card:hover { border-color: #333; }
-        .check-btn { width: 24px; height: 24px; border: 2px solid #444; border-radius: 50%; margin-right: 15px; cursor: pointer; }
-        .add-task-btn { background: var(--accent-purple); color: black; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="logo-area"><h1>FlowTrackr</h1></div>
-        <div class="nav-links">
-            <a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i> Dashboard</a>
-            <a href="tasks.html" class="nav-item active"><i class="fa-solid fa-list-check"></i> Tasks</a>
-            <a href="homework.html" class="nav-item"><i class="fa-solid fa-book"></i> Homework</a>
-            <a href="settings.html" class="nav-item"><i class="fa-solid fa-gear"></i> Settings</a>
-        </div>
-    </nav>
-    <main>
-        <div class="section-header">
-            <h2>Your Tasks</h2>
-            <button class="add-task-btn">+ New Task</button>
-        </div>
-        <div class="task-card">
-            <div class="check-btn"></div>
-            <div>
-                <h4>Complete Chemistry Balancing Worksheet</h4>
-                <p style="color: var(--text-dim); font-size: 0.8rem;">Priority: High</p>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
+{
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Task title"
+    },
+    "due_time": {
+      "type": "string",
+      "description": "Due time for the task"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "default": "medium",
+      "description": "Task priority level"
+    },
+    "estimated_minutes": {
+      "type": "number",
+      "default": 30,
+      "description": "Estimated time to complete in minutes"
+    },
+    "points": {
+      "type": "number",
+      "default": 10,
+      "description": "Points earned on completion"
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether task is completed"
+    },
+    "completed_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the task was completed"
+    },
+    "progress_note": {
+      "type": "string",
+      "description": "User's progress note, e.g. '5 out of 20 done'"
+    },
+    "total_steps": {
+      "type": "number",
+      "description": "Total steps/questions (optional)"
+    },
+    "steps_done": {
+      "type": "number",
+      "description": "Steps completed so far (optional)"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}
